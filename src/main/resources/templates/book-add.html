@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<body><!-- th:object="${userReqDTO} 왜 리스판스가 아닌가? 보내는거니까! object뒤에는 객체 -->
+<form action="#" th:action="@{/bookWithThymeleaf/add}" th:object="${bookReqDTO}"method="post">
+    <label for="title">TITLE</label>
+    <input type="text" th:field="*{title}" id="title">
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    <br/>
+    <label for="author">AUTHOR</label>
+    <input type="text" th:field="*{author}" id="author">
+    <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+    <br/>
+    <label for="isbn">ISBN</label>
+    <input type="text" th:field="*{isbn}" id="isbn">
+    <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"></span>
+    <br/>
+    <label for="genre">GENRE</label>
+    <input type="text" th:field="*{genre}" id="genre">
+    <span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+    <br/>
+    <input type="submit" value="등록">
+</form>
+</body>
+</html>

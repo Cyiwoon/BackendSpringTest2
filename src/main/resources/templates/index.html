@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>COUNT</td>
+        <td>ID</td>
+        <td>TITLE</td>
+        <td>AUTHOR</td>
+        <td>ISBN</td>
+        <td>GENRE</td>
+        <td>CREATED_AT</td>
+        <td>수정</td>
+        <td>삭제</td>
+    </tr>
+    <tr th:each="book, cState : ${bookList}">
+        <td th:text="${cState.count}"></td>
+        <td th:text="${book.id}"></td>
+        <td><a th:href="@{/bookWithThymeleaf/book/{id}(id=${book.id})}"><span th:text="${book.title}"></span></a></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${#temporals.format(book.created_at, 'yyyy-MM-dd')}"></td>
+        <td><a th:href="@{/bookWithThymeleaf/update/{id}(id=${book.id})}">수정</a></td>
+        <td><a th:href="@{/bookWithThymeleaf/delete/{id}(id=${book.id})}">삭제</a></td>
+    </tr>
+</table>
+<a href="/bookWithThymeleaf/add">고객 정보 등록</a>
+</body>
+</html>
